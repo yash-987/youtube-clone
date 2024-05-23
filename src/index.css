@@ -2,11 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-	margin:0;
+body {
+	margin: 0;
 	background-color: #181818;
-	
-
 }
 @layer base {
 	:root {
@@ -81,23 +79,20 @@ body{
 	}
 }
 
-
-
 ::-webkit-scrollbar {
-	background-color: transparent;
+	background-color: #1c1b1b;
 	width: 0.5rem;
-  }
-  
-  ::-webkit-scrollbar-thumb {
+}
+
+::-webkit-scrollbar-thumb {
 	background-color: #c7c7c7;
 	border-radius: 1rem;
-  }
+}
 
-  
 .scrollbar-hidden::-webkit-scrollbar-thumb {
-    @apply bg-transparent
+	@apply bg-[#1c1b1b];
 }
 
 .scrollbar-hidden:hover::-webkit-scrollbar-thumb {
-    @apply bg-slate-300;
+	@apply bg-slate-300;
 }

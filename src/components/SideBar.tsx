@@ -20,6 +20,7 @@ import { Button } from './Button';
 import { TbDeviceGamepad2, TbMusic } from 'react-icons/tb';
 import { GiFilmStrip } from 'react-icons/gi';
 import { useSidebarContext } from '@/context/SidebarContext';
+import { PageHeaderFirstSection } from './Navbar';
 
 export function SideBar() {
 	const { isLargeOpen, isSmallOpen } = useSidebarContext();
@@ -27,7 +28,7 @@ export function SideBar() {
 	const mainLinks = [
 		{
 			name: 'Home',
-			url: '/home',
+			url: '/',
 			icon: <Home />,
 		},
 		{
@@ -123,8 +124,10 @@ export function SideBar() {
 	return (
 		<>
 			<aside
-				className={`w-[5rem] -translate-x-96  text-white  h-screen bg-[#1c1b1b] ${
-					isLargeOpen ? '  ' : '  md:translate-x-0 md:transition-transform '
+				className={`w-[5rem]   flex-col text-white bg-[#1c1b1b] ${
+					isLargeOpen
+						? ' hidden '
+						: '  md:flex md:transition-all '
 				}`}
 			>
 				<ul>
@@ -141,16 +144,12 @@ export function SideBar() {
 				</ul>
 			</aside>
 			<aside
-				className={` w-[14.4rem] overflow-y-auto scrollbar-hidden flex-col scroll-smooth ${
+				className={` md:w-[14.9rem] md:sticky overflow-y-auto absolute scrollbar-hidden flex-col scroll-smooth ${
 					isLargeOpen
-						? ' md:-translate-x-20 md:transition-all '
-						: 'md:-translate-x-96 md:transition-all '
+						? ' md:flex  '
+						: ' md:hidden '
 				}
-				${
-					isSmallOpen
-						? ' flex -translate-x-20 transition-transform  '
-						: ' -translate-x-96 transition-transform'
-				}`}
+				${isSmallOpen ? ' flex z-[999] bg-[#1c1b1b]' : 'hidden'}`}
 			>
 				<LargeSideBarSection>
 					<ul className="flex flex-col gap-3  ml-2 mr-3 mt-2   ">

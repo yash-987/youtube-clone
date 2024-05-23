@@ -4,14 +4,32 @@ import { BsYoutube } from 'react-icons/bs';
 import { FiSearch } from 'react-icons/fi';
 import { useEffect, useRef, useState } from 'react';
 import { BiLeftArrowAlt } from 'react-icons/bi';
+
 import { useSidebarContext } from '@/context/SidebarContext';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAppDisPatch, useAppSelector } from '@/store/hooks';
+import {  changeSearchTerm, clearVideos } from '@/store';
+import { getSearchPageVideos } from '@/store/reducers/getSearchPageVideos';
+
 
 const Navbar = () => {
 	const [isSmallSearchOpen, setIsSmallSearchOpen] = useState(false);
 	const [isOpen, setIsOpen] = useState(false);
 
 	const inputref = useRef<HTMLInputElement>(null);
+
+	const location = useLocation();
+	const navigate = useNavigate();
+	const dispatch = useAppDisPatch()
+	const searchTerm = useAppSelector((state) => state.youtube.searchTerm);
+
+	const handleSearch = () => {
+		if (location.pathname !== '/search ') navigate('/search');
+		else {
+			dispatch(clearVideos());
+			dispatch(getSearchPageVideos(false))
+		}
+	}
 
 	const handleClickOutside = (e: Event) => {
 		if (
@@ -40,8 +58,12 @@ const Navbar = () => {
 		>
 			<PageHeaderFirstSection hidden={isOpen} />
 
-			<div className={` gap-4 ${isOpen ? 'flex' : 'hidden md:flex'}`}>
-				<form className={`flex items-center `}>
+			<div className={` gap-4  ${isOpen ? 'flex' : 'hidden md:flex'}`}>
+				<form className={`flex items-center  `}
+					onSubmit={(e) => {
+						e.preventDefault();
+						handleSearch();
+				}}>
 					<Button variant="ghost" className="text-3xl md:hidden mx-2 ">
 						<a href="/">
 							<BiLeftArrowAlt />
@@ -63,6 +85,10 @@ const Navbar = () => {
 						}}
 						type="search"
 						placeholder="Search"
+						value={searchTerm}
+						onChange={(e) => {
+							dispatch(changeSearchTerm(e.target.value))
+						}}
 						className={` input border shadow-inner   w-[18rem] text-white pr-2  text-lg  outline-none  ${
 							isSmallSearchOpen
 								? 'border-blue-500  border-l-0 pl-1 md:pl-2  '
@@ -70,19 +96,19 @@ const Navbar = () => {
 						}  md:w-[33rem]   py-1   bg-transparent`}
 					/>
 
-					<div className="border bg-zinc-800 group border-gray-600 px-5 py-2  border-l-0 rounded-r-full cursor-pointer ">
+					<button className="border bg-zinc-800 group border-gray-600 px-5 py-2  border-l-0 rounded-r-full cursor-pointer ">
 						<FiSearch className="text-white text-xl " />
 						<p className="bg-gray-500 text-white p-1 rounded-sm absolute top-[3.8rem] left-[63.6%] text-sm hidden group-hover:flex">
 							Search
 						</p>
-					</div>
+					</button>
 
-					<Button variant="secondary" size="default" className="ml-3 group ">
+					<div className=" bg-zinc-800 group border-gray-600 p-[0.5rem] hover:bg-zinc-700 rounded-full cursor-pointer ml-3 group">
 						<Mic />
 						<p className="bg-gray-500 font-normal text-sm p-1 rounded-sm absolute top-[3.8rem] hidden group-hover:flex">
 							Search with your voice
 						</p>
-					</Button>
+					</div>
 				</form>
 			</div>
 

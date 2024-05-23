@@ -27,6 +27,23 @@ export interface HomePageVideos{
     };
 
 }
+export interface SearchPageVideos{
+    videoId: string;
+    videoTitle: string;
+    videoDescription: string;
+    videoLink: string;
+
+    videoThumbnail: string;
+    videoDuration: string;
+    videoViews: string;
+    videoAge: string;
+    channelInfo: {
+        id: string;
+        image: string;
+        name: string;
+    };
+
+}
 
 export interface CurrentPlaying{
     videoId: string;

@@ -1,4 +1,5 @@
 
+import { error } from "console";
 import { ReactNode, createContext, useContext, useState } from "react";
 
 interface SidebarContextProps{
@@ -13,7 +14,7 @@ const SidebarContext = createContext<SidebarContextProps | null>(null)
 export function useSidebarContext() {
     const value = useContext(SidebarContext)
     
-    if (value === null) throw Error('Cannot use outside of Sidebar')
+    if (value === null) throw Error('Cannot use outside of sidebar')
     
     return value
 }

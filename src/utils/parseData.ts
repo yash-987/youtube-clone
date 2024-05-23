@@ -7,7 +7,7 @@ import {
 import { YOUTUBE_API_URL } from './constants';
 import { HomePageVideos } from '@/Types';
 
-const API_KEY = import.meta.env.VITE_YOUTUBE_DATA_API_KEY;
+const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 export const parseData = async (items: any[]) => {
 	try {
