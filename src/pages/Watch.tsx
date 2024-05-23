@@ -141,7 +141,7 @@ export default function Watch() {
                   </div>
                 </div>
                 <div className="mr-24 flex flex-col gap-3">
-                                {getRecommendedVideos.length && recommendedVideos && recommendedVideos.map((item: RecommendedVideos) => (
+                                {getRecommendedVideos.length  && recommendedVideos.map((item: RecommendedVideos) => (
                       <WatchCard data={item} key={item.videoId}/>
                  ))}
                 </div>

@@ -1,9 +1,10 @@
-import React from "react";
+
 import { RecommendedVideos } from "../Types";
 import { Link } from "react-router-dom";
 
 
 export default function WatchCard({ data }: { data: RecommendedVideos }) {
+    
   
     
   return (
