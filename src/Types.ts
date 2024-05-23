@@ -53,6 +53,7 @@ export interface CurrentPlaying{
     videoLikes: string;
     videoAge: string;
     channelInfo: {
+        image:string,
         id: string;
         name: string;
         subscribers:string

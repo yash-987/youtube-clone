@@ -1,5 +1,5 @@
 
-import { SidebarProvider, useSidebarContext } from '@/context/SidebarContext';
+import {  useSidebarContext } from '@/context/SidebarContext';
 import Navbar from '../components/Navbar';
 import SideBar from '@/components/SideBar';
 import { useAppDisPatch, useAppSelector } from '@/store/hooks';
@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 
 import Spinner from '@/components/Spinner';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { HomePageVideos, SearchPageVideos } from '@/Types';
+import {  SearchPageVideos } from '@/Types';
 
 
 import { clearVideos } from '@/store';
@@ -22,7 +22,7 @@ function Home() {
 	const dispatch = useAppDisPatch();
   const videos = useAppSelector((state) => state.youtube.videos);
   const {isLargeOpen} = useSidebarContext()
- const searchTerm = useAppSelector(state => state.youtube.searchTerm)
+
   useEffect(() => {
          dispatch(clearVideos())
 		dispatch(getSearchPageVideos(false));

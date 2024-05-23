@@ -1,4 +1,4 @@
-import { SidebarProvider, useSidebarContext } from '@/context/SidebarContext';
+
 import Navbar from '../components/Navbar';
 import SideBar from '@/components/SideBar';
 import { useAppDisPatch, useAppSelector } from '@/store/hooks';
@@ -12,6 +12,7 @@ import { HomePageVideos } from '@/Types';
 
 import Card from '@/components/Card';
 import { clearVideos } from '@/store';
+import { useSidebarContext } from '@/context/SidebarContext';
 
 
 // const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;

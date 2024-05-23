@@ -1,5 +1,5 @@
 
-import { error } from "console";
+
 import { ReactNode, createContext, useContext, useState } from "react";
 
 interface SidebarContextProps{

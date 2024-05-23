@@ -20,7 +20,7 @@ import { Button } from './Button';
 import { TbDeviceGamepad2, TbMusic } from 'react-icons/tb';
 import { GiFilmStrip } from 'react-icons/gi';
 import { useSidebarContext } from '@/context/SidebarContext';
-import { PageHeaderFirstSection } from './Navbar';
+
 
 export function SideBar() {
 	const { isLargeOpen, isSmallOpen } = useSidebarContext();
