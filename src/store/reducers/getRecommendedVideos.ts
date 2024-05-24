@@ -8,7 +8,7 @@ import { parseRecommendedData } from "@/utils/pareRecommendedData";
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 export const getRecommendedVideos = createAsyncThunk(
-    "youtube/RecommendedVideos",
+    "youtube/recommendedVideos",
     async (videoId: string, { getState }) => {
         const { youtube: {
             currentPlaying: {

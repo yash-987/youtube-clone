@@ -14,6 +14,8 @@ import WatchCard from "../components/WatchCard";
 import { RecommendedVideos } from "@/Types";
 import { useEffect, useState } from "react";
 
+import SideBar from "@/components/SideBar";
+
 export default function Watch() {
     const [showMoreStatus, setShowMoreStatus] = useState<boolean>();
     const { id } = useParams();
@@ -34,22 +36,35 @@ export default function Watch() {
     // console.log(dispatch(getRecommendedVideos(id)))//
 
     useEffect(() => {
-        if (currentPlaying && id) dispatch(getRecommendedVideos(id));
+      if (currentPlaying && id) dispatch(getRecommendedVideos(id));
+      
 
     }, [id, dispatch, currentPlaying]);
     return (
         <>
         {currentPlaying && currentPlaying?.videoId === id && (
-          <div className="max-h-screen overflow-hidden">
+          <div className="max-h-screen overflow-hidden text-white">
             <div style={{ height: "7.5vh" }}>
               <Navbar />
             </div>
             <div className="flex w-full" style={{ height: "92.5vh" }}>
-              <div className="flex gap-y-10 gap-x-5 p-7 mx-20 mr-0 w-full overflow-auto">
-                <div style={{ maxWidth: "800px" }}>
-                  <div>
+              <div className="flex flex-col md:flex-row   md:gap-y-10 gap-x-5 md:p-7   mr-0 w-full overflow-auto">
+                <SideBar/>
+                <div className="md:mr-20" style={{ maxWidth: "800px" }} >
+                  <div  >
                     <iframe
-                      width="800"
+                      className="rounded-lg flex md:hidden mx-auto my-2 md:m-0 "
+                      width="450 "
+                      height="290"
+                      src={`https://www.youtube.com/embed/${id}?autoplay=1`}
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                    <iframe
+                      className="rounded-lg hidden md:flex md:rounded-none mx-auto my-2 md:m-0 "
+                      width="900 "
                       height="502"
                       src={`https://www.youtube.com/embed/${id}?autoplay=1`}
                       title="YouTube video player"
@@ -57,8 +72,8 @@ export default function Watch() {
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     ></iframe>
-                    <div className="mt-5">
-                      <p className="text-xl">{currentPlaying.videoTitle}</p>
+                    <div className="mt-5 w-full flex flex-col justify-center ">
+                      <p className="text-lg md:text-xl ml-4 md:m-0 ">{currentPlaying.videoTitle}</p>
                       <div className="flex justify-between mt-1">
                         <div className="text-sm text-gray-400">
                           <span className="after:content-['•'] after:mx-1">
@@ -92,7 +107,7 @@ export default function Watch() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex gap-4 flex-col border-solid border-gray-400 border-2 my-5 pb-3 border-l-transparent border-r-transparent">
+                      <div className="flex gap-4 flex-col ml-3 border-solid border-gray-400 border-2 my-5 pb-3 border-l-transparent border-r-transparent">
                         <div className="flex items-center gap-5 mr-5 mt-4">
                           <div>
                             <img
@@ -142,9 +157,9 @@ export default function Watch() {
                   </div>
                 </div>
                 <div className="mr-24 flex flex-col gap-3">
-                                {getRecommendedVideos.length  && recommendedVideos.map((item: RecommendedVideos) => (
+                                {getRecommendedVideos.length && recommendedVideos.map((item: RecommendedVideos) => (
                       <WatchCard data={item} key={item.videoId}/>
-                 ))}
+                 ))}  
                 </div>
               </div>
             </div>

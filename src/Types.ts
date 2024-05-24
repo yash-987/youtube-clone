@@ -65,14 +65,13 @@ export interface RecommendedVideos{
     videoId: string;
     videoTitle: string;
     videoDuration: string;
-
     videoViews: string;
     videoThumbnail: string;
     videoAge: string;
     channelInfo: {
         id: string;
         name: string;
-    }
+    };
 
 }
 

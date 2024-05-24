@@ -124,10 +124,10 @@ export function SideBar() {
 	return (
 		<>
 			<aside
-				className={`w-[5rem]   flex-col text-white bg-[#1c1b1b] ${
+				className={`w-[5rem]    flex-col text-white bg-[#1c1b1b] ${
 					isLargeOpen
 						? ' hidden '
-						: '  md:flex md:transition-all '
+						: ' hidden md:flex md:transition-all '
 				}`}
 			>
 				<ul>

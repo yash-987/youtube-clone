@@ -25,7 +25,7 @@ export const parseRecommendedData = async (items: Item[], videoId: string) => {
             data: { items: videosData }
             
         } = await axios.get(`${YOUTUBE_API_URL}/videos?part=contentDetails,statistics&id=${videoIds.join(',')}&key=${API_KEY}`);
-
+     
         const parsedData: RecommendedVideos[] = [];
 
         newItems.forEach((item, index) => {
@@ -36,7 +36,8 @@ export const parseRecommendedData = async (items: Item[], videoId: string) => {
                 videoTitle: item.snippet.title,
                 videoThumbnail: item.snippet.thumbnails.medium.url,
                 videoDuration: parseVideoDuration(
-                    videosData[index].contentDetails.videoDuration
+              videosData[index].contentDetails.duration
+                    
                 ),
                 videoViews: convertRawViewsToString(
                     videosData[index].statistics.viewCount
