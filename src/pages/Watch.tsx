@@ -48,30 +48,38 @@ export default function Watch() {
               <Navbar />
             </div>
             <div className="flex w-full" style={{ height: "92.5vh" }}>
-              <div className="flex flex-col md:flex-row   md:gap-y-10 gap-x-5 md:p-7   mr-0 w-full overflow-auto">
+              <div className="flex flex-col md:flex-row overflow-auto md:gap-x-4 ">
                 <SideBar/>
-                <div className="md:mr-20" style={{ maxWidth: "800px" }} >
-                  <div  >
+                <div className="md:mr:16" style={{ maxWidth: "800px" }} >
+                  <div   >
+                   
+                     {/* <iframe
+                      className="rounded-lg flex mx-auto my-2 md:m-0 "
+                      width="450 md:900 "
+                      height="290 md:502"
+                      src={`https://www.youtube.com/embed/${id}?autoplay=1`}
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen>
+                      </iframe>  */}
+                    <div className="w-full h-56 md:h-[25rem]">
+
+                    <div className="w-11/12 mx-auto h-full md:w-full">
+                      
                     <iframe
-                      className="rounded-lg flex md:hidden mx-auto my-2 md:m-0 "
-                      width="450 "
-                      height="290"
+                      className="rounded-lg  md:rounded-none mx-auto my-2 md:m-0 "
+                          width='100%'
+                          height='100%'
                       src={`https://www.youtube.com/embed/${id}?autoplay=1`}
                       title="YouTube video player"
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     ></iframe>
-                    <iframe
-                      className="rounded-lg hidden md:flex md:rounded-none mx-auto my-2 md:m-0 "
-                      width="900 "
-                      height="502"
-                      src={`https://www.youtube.com/embed/${id}?autoplay=1`}
-                      title="YouTube video player"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
+</div>
+                    </div>
+                    
                     <div className="mt-5 w-full flex flex-col justify-center ">
                       <p className="text-lg md:text-xl ml-4 md:m-0 ">{currentPlaying.videoTitle}</p>
                       <div className="flex justify-between mt-1">
@@ -154,15 +162,16 @@ export default function Watch() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                
                 </div>
+              </div>
                 <div className="mr-24 flex flex-col gap-3">
                                 {getRecommendedVideos.length && recommendedVideos.map((item: RecommendedVideos) => (
                       <WatchCard data={item} key={item.videoId}/>
                  ))}  
                 </div>
               </div>
-            </div>
+              </div>
           </div>
         )}
       </>
